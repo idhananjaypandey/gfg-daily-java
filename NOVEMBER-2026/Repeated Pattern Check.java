@@ -1,26 +1,21 @@
 class Solution {
     public boolean findPattern(String s) {
-        int i = 0;
-        int n = s.length();
-        
-        while (i < n) {
-            int countX = 0;
-            while (i < n && s.charAt(i) == 'x') {
-                countX++;
-                i++;
-            }
-            
-            int countY = 0;
-            while (i < n && s.charAt(i) == 'y') {
-                countY++;
-                i++;
-            }
-            
-            if (countX == 0 || countX != countY) {
-                return false;
+        int xCount = 0;
+        int yCount = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'x') {
+                if (yCount > 0) {
+                    if (xCount != yCount) {
+                        return false;
+                    }
+                    xCount = 0;
+                    yCount = 0;
+                }
+                xCount++;
+            } else {
+                yCount++;
             }
         }
-        
-        return true;
+        return xCount == yCount;
     }
 }
