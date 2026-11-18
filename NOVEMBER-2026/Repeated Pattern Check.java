@@ -1,3 +1,5 @@
+// Repeated Pattern Check
+
 class Solution {
     public boolean findPattern(String s) {
         int xCount = 0;
